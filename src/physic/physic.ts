@@ -1,5 +1,5 @@
-import Vector from "../tool/vector";
-import BoundingBox from "./BoundingBox";
+import Vector from "../tool/vector"
+import BoundingBox from "./BoundingBox"
 
 export default class Physics{
     position: Vector

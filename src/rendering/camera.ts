@@ -1,4 +1,4 @@
-import Vector from "../tool/vector";
+import Vector from "../tool/vector"
 
 export default class Camera{
     center: Vector

@@ -22,11 +22,11 @@ export default class Rendering {
         this.resize()
     }
     private resize = () => {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
+        this.canvas.width = window.innerWidth
+        this.canvas.height = window.innerHeight
         this.half = new Vector(Math.trunc(this.canvas.width / 2), Math.trunc(this.canvas.height / 2))
 
-        this.commandCallBack(this.canvas);
+        this.commandCallBack(this.canvas)
     }
     clear() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
@@ -53,8 +53,8 @@ export default class Rendering {
             const pos = position.clone
             pos.sub(this.camera.center)
             const { x, y } = pos
-            const riga = n % columns;
-            const colonna = Math.trunc(n / columns);
+            const riga = n % columns
+            const colonna = Math.trunc(n / columns)
             this.context.globalAlpha = e.globalAlpha
             this.context.drawImage(canvasImageSource,
                 Math.trunc(riga * width),

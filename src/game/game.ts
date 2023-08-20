@@ -69,8 +69,8 @@ export default class Game extends GameLoop{
                     for (let i = 0; i < data.length; i++) {
                         const element = data[i]
 
-                        let x1 = i%level.height * level.tilewidth;
-                        let y1 = Math.floor(i/level.width) * level.tileheight;        
+                        const x1 = i%level.height * level.tilewidth
+                        const y1 = Math.floor(i/level.width) * level.tileheight     
         
                         const currentTile : EntityRender = {
                             position: new Vector(x1,y1),
@@ -83,14 +83,14 @@ export default class Game extends GameLoop{
                         }        
                         this.entitiesRendering.push(currentTile)
                     }
-                    break;
+                    break
             }
         }
         this.loading = false
 
         this.GameLoop(0)
     }
-    Draw() {//renderizza a schermo tutto        
+    Draw() {//rendering to screen
         this.rendering.clear()
         
         if(!this.loading){          
@@ -99,16 +99,18 @@ export default class Game extends GameLoop{
         
         this.rendering.drawDebug(this.FPS.getFps())
     }
-    Update(deltaTimeInMillisecond: number) {//aggiorna i valori del gioco
+    Update(deltaTimeInMillisecond: number) {//update game
         const deltaTime = deltaTimeInMillisecond/1000
 
-        if(!this.loading){//se non sto caricando niente mi posso muovere
-            this.camera.center = this.player.physics.position
-
-            const inputs = this.command.GetCommand()
-
-            this.player.physics.physicStep(deltaTime, inputs.dir, this.collision)
-
+        if(this.loading){//if you are loading not update game
+            return
         }
+        this.camera.center = this.player.physics.position
+
+        const inputs = this.command.GetCommand()
+
+        this.player.physics.physicStep(deltaTime, inputs.dir, this.collision)
+
+        
     }
 }
