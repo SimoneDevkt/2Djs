@@ -1,0 +1,15 @@
+{ "columns":4,
+ "image":"test.png",
+ "imageheight":192,
+ "imagewidth":80,
+ "margin":0,
+ "name":"test",
+ "spacing":0,
+ "tilecount":24,
+ "tiledversion":"1.7.2",
+ "tileheight":32,
+ "tilewidth":20,
+ "transparentcolor":"#ff00ff",
+ "type":"tileset",
+ "version":"1.6"
+}
