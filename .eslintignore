@@ -2,3 +2,4 @@ node_modules
 dist
 res
 **/*.d.ts
+package-lock.json
