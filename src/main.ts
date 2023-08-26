@@ -7,7 +7,7 @@ const idCanvas = 'gameCanvas'
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `<canvas id="${idCanvas}"></canvas>`
 
 window.addEventListener('load', function() {
-  const game = new Game(idCanvas)
-  game.start()
-}, true)
 
+}, true)
+const game = new Game(idCanvas)
+game.start()
