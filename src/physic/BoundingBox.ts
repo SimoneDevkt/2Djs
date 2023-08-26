@@ -1,4 +1,4 @@
-export default interface BoundingBox { 
+export default interface BoundingBox {
     height: number
     width: number
     x: number

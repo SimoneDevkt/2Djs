@@ -10,97 +10,94 @@ export default class Vector {
     get length() {
         return Math.hypot(this.x, this.y)
     }
-    get coordinate(){
+    get coordinate() {
         return [this.x, this.y]
     }
-    get degree(){
+    get degree() {
         return this.toDegrees(this.radian)
     }
-    get radian(){
+    get radian() {
         return Math.atan2(this.x, this.y)
     }
-	get componentX(){
-		return new Vector(this.x, 0)
-	}
-	get componentY(){
-		return new Vector(0, this.y)
-	}
-    get opposite(){
+    get componentX() {
+        return new Vector(this.x, 0)
+    }
+    get componentY() {
+        return new Vector(0, this.y)
+    }
+    get opposite() {
         return new Vector(-this.x, -this.y)
     }
-    get oppositeX(){
+    get oppositeX() {
         return new Vector(-this.x, this.y)
     }
-    get oppositeY(){
+    get oppositeY() {
         return new Vector(this.x, -this.y)
     }
-	get clone(){
-		return new Vector(this.x, this.y)
-	}    
-    set(x: any, y: any){
+    get clone() {
+        return new Vector(this.x, this.y)
+    }
+    set(x: number, y: number) {
         this.x = x
         this.y = y
     }
-    add(v: { x: any; y: any }){
+    add(v: { x: number; y: number }) {
         this.x += v.x
         this.y += v.y
     }
-    getAdd(v: { x: any; y: any }){
+    getAdd(v: { x: number; y: number }) {
         const add = this.clone
         add.add(v)
-        return(add)
+        return add
     }
-    sub(v: { x: number; y: number }){
+    sub(v: { x: number; y: number }) {
         this.x -= v.x
         this.y -= v.y
     }
-    dotProd(v: { x: number; y: number }){
+    dotProd(v: { x: number; y: number }) {
         return this.x * v.x + this.y * v.y
     }
     crossProduct(v: { y: number; x: number }) {
         return this.x * v.y - v.x * this.y
     }
-    toString(){
-        return " X: " + this.x + " Y: " + this.y 
+    toString() {
+        return ' X: ' + this.x + ' Y: ' + this.y
     }
-    toDegrees(radians: number){
+    toDegrees(radians: number) {
         return (radians * 180) / Math.PI
     }
-    toRadians(degrees: number){
+    toRadians(degrees: number) {
         return (degrees * Math.PI) / 180
     }
     rotate(radians: number) {
         const cos = Math.cos(radians)
         const sin = Math.sin(radians)
-        return new Vector(
-            this.x * cos - this.y * sin,
-            this.x * sin + this.y * cos
-        )
+        return new Vector(this.x * cos - this.y * sin, this.x * sin + this.y * cos)
     }
-    isGreaterThan(v: string | any[]){
+    isGreaterThan(v: Vector) {
         return this.length > v.length
     }
-    scale(scaleFactor: number){
-        this.x *= scaleFactor 
-        this.y *= scaleFactor 
+    scale(scaleFactor: number) {
+        this.x *= scaleFactor
+        this.y *= scaleFactor
     }
-    getScale(scaleFactor: number){
+    getScale(scaleFactor: number) {
         const scale = this.clone
         scale.scale(scaleFactor)
-        return(scale)
+        return scale
     }
-    scaleX(scaleFactor: number){
-        this.x *= scaleFactor 
+    scaleX(scaleFactor: number) {
+        this.x *= scaleFactor
     }
-    scaleY(scaleFactor: number){
-        this.y *= scaleFactor 
+    scaleY(scaleFactor: number) {
+        this.y *= scaleFactor
     }
     normalize() {
-        let s = this.length === 0 ? 0 : 1 / this.length
+        const s = this.length === 0 ? 0 : 1 / this.length
         this.scale(s)
         return this
     }
-    set length(lenght){
+    set length(lenght) {
         this.normalize().scale(lenght)
     }
     projectOn(other: { length: number; x: number; y: number }) {
@@ -110,9 +107,7 @@ export default class Vector {
     /*reflect(normal) {
         return this.subtract(this.projectOn(normal).scaleBy(2))
     }*/
-    angleBetween(other: any) {
-        return this.toDegrees(
-            Math.atan2(this.crossProduct(other), this.dotProd(other))
-        )
+    angleBetween(other: Vector) {
+        return this.toDegrees(Math.atan2(this.crossProduct(other), this.dotProd(other)))
     }
 }

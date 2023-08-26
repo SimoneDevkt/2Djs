@@ -4,21 +4,21 @@ export default class FPS {
     fps: number
     frames: number
     millisec: number
-	constructor() { 
+    constructor() {
         this.fps = 0
         this.frames = 0
         this.millisec = 0
-	}
-    addFrame(deltaTimeInMillisecond: number){        
+    }
+    addFrame(deltaTimeInMillisecond: number) {
         this.millisec += deltaTimeInMillisecond
-        if(this.millisec >= 1000){
+        if (this.millisec >= 1000) {
             this.millisec = this.millisec % 1000
             this.fps = this.frames
             this.frames = 0
         }
         this.frames++
     }
-    getFps(){
+    getFps() {
         return this.fps
     }
 }

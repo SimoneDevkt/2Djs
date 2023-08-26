@@ -5,25 +5,25 @@ export default abstract class GameLoop {
     loading: boolean
     previousTime: number
     FPS: FPS
-	constructor() {
+    constructor() {
         this.paused = false
         this.loading = false
         this.previousTime = 0
-        this.FPS = new FPS()//fps counter
-	}
+        this.FPS = new FPS() //fps counter
+    }
     GameLoop(deltaTimeInMillisecond: number) {
         this.FPS.addFrame(deltaTimeInMillisecond)
-        if(!this.paused) {
-            this.Update(deltaTimeInMillisecond)//update element
+        if (!this.paused) {
+            this.Update(deltaTimeInMillisecond) //update element
         }
-        this.Draw()//draw the scenes on the screen
-        window.requestAnimationFrame(currentTimeInMillisecond => { 
+        this.Draw() //draw the scenes on the screen
+        window.requestAnimationFrame(currentTimeInMillisecond => {
             const deltaTimeInMillisecond = currentTimeInMillisecond - this.previousTime
             this.previousTime = currentTimeInMillisecond
-            this.GameLoop(deltaTimeInMillisecond)// call GameLoop every frame
+            this.GameLoop(deltaTimeInMillisecond) // call GameLoop every frame
         })
     }
-    abstract Update(deltaTimeInMillisecond: number) :void
+    abstract Update(deltaTimeInMillisecond: number): void
 
-    abstract Draw() :void
+    abstract Draw(): void
 }
